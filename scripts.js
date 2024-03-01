@@ -52,6 +52,28 @@
 // });
 
 
+
+
+// const questionContainers = document.querySelectorAll('.questionContainer');
+
+// questionContainers.forEach(function (container, index) {
+//     container.addEventListener('click', function () {
+//         const answer = document.querySelector('#answer' + (index + 1));
+//         const img = container.querySelector('img');
+
+//         if (answer.style.display !== 'block') {
+//             answer.style.display = 'block';
+//             img.src = 'assets/images/icon-minus.svg';
+//         } else {
+//             answer.style.display = 'none';
+//             img.src = 'assets/images/icon-plus.svg';
+//         }
+//     });
+// });
+
+
+
+
 const questionContainers = document.querySelectorAll('.questionContainer');
 
 questionContainers.forEach(function (container, index) {
@@ -59,12 +81,14 @@ questionContainers.forEach(function (container, index) {
         const answer = document.querySelector('#answer' + (index + 1));
         const img = container.querySelector('img');
 
-        if (answer.style.display !== 'block') {
-            answer.style.display = 'block';
+        if (answer.style.maxHeight === '0px' || answer.style.maxHeight === '') {
+            // Set max-height to the actual height of the answer content
+            answer.style.maxHeight = answer.scrollHeight + 'px';
             img.src = 'assets/images/icon-minus.svg';
         } else {
-            answer.style.display = 'none';
+            answer.style.maxHeight = '0';
             img.src = 'assets/images/icon-plus.svg';
         }
     });
 });
+
